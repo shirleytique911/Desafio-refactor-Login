@@ -13,7 +13,7 @@ userRouter.get("/register", passport.authenticate("register", {failureRedirect: 
       if (!first_name || !last_name || !email || ! age ) return res.status(400).send({status: 400, error: 'Faltan Datos'})
       res.redirect("/login");
     } catch (error) {
-      res.status(500).send("Error al acceder al acceder al registrar: " + error.message);
+      res.status(500).send("Error  al acceder a registrar: " + error.message);
     }
   });
 
@@ -24,7 +24,7 @@ userRouter.get("/register", passport.authenticate("register", {failureRedirect: 
 
   userRouter.post("/login", passport.authenticate("login", {failureRedirect:"/faillogin"}), async (req, res) => {
     try {
-         if (!req.user) return res.status(400).send({status: "error", error: "Credenciales invalidas" })
+         if (!req.user) return res.status(400).send({status: "error", error: " Credenciales No permitidas" })
          
          if (req.user.rol === 'admin') {
             req.session.emailUsuario = req.user.email
